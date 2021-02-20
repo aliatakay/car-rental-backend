@@ -27,14 +27,14 @@ namespace ConsoleUI
 
             // ShowCars();
 
-            // ShowCarDetails();
+            ShowCarDetails();
         }
 
         private static void ShowCarDetails()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("Araç: " + car.CarName);
                 Console.WriteLine("Marka: " + car.BrandName);
@@ -48,7 +48,7 @@ namespace ConsoleUI
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.ColorName);
             }
@@ -58,7 +58,7 @@ namespace ConsoleUI
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.BrandName);
             }
@@ -69,7 +69,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
 
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.CarName);
             }
@@ -162,7 +162,7 @@ namespace ConsoleUI
 
             carManager.Delete(new Car { CarId = 3 });
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.CarName);
             }
@@ -172,7 +172,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new InMemoryCarDal());
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.CarName);
             }

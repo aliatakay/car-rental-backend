@@ -1,4 +1,6 @@
 ﻿using BLL.Abstract;
+using BLL.Constants;
+using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,29 +18,32 @@ namespace BLL.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
+            return new SuccessDataResult<Brand>(Messages.DataAdded);
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessDataResult<Brand>(Messages.DataDeleted);
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.DataListed);
         }
 
-        public Brand GetById(int id)
+        public IDataResult<Brand> GetById(int id)
         {
-            return _brandDal.Get(b => b.BrandId == id);
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id), Messages.DataListed);
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
+            return new SuccessDataResult<Brand>(Messages.DataUpdated);
         }
     }
 }
