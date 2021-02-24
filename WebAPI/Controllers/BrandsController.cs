@@ -43,8 +43,8 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.Add(brand);
 
-            if (result.Success) return Ok(result);
-            return BadRequest(result);
+            if (result.Success) return Ok(result.Message);
+            return BadRequest(result.Message);
         }
 
         [HttpPost("delete")]
@@ -52,8 +52,8 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.Delete(brand);
 
-            if (result.Success) return Ok(result);
-            return BadRequest(result);
+            if (result.Success) return Ok(result.Message);
+            return BadRequest(result.Message);
         }
 
         [HttpPost("update")]
@@ -61,8 +61,8 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.Update(brand);
 
-            if (result.Success) return Ok(result);
-            return BadRequest(result);
+            if (result.Success) return Ok(result.Message);
+            return BadRequest(result.Message);
         }
     }
 }
