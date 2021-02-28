@@ -21,7 +21,7 @@ namespace BLL.ValidationRules.FluentValidation
             RuleFor(c => c.DailyPrice).NotEmpty();
             RuleFor(c => c.DailyPrice).GreaterThan(0);
 
-            RuleFor(c => c.ModelYear).GreaterThanOrEqualTo(2000);
+            RuleFor(c => c.ModelYear).GreaterThanOrEqualTo(2000).When(c => c.ModelYear != 0);
 
             RuleFor(c => c.Description).MaximumLength(200);
         }
