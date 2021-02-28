@@ -117,30 +117,6 @@ namespace ConsoleUI
             Console.WriteLine(result.Message);
         }
 
-        private static void ShowColors()
-        {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-
-            var result = colorManager.GetAll();
-
-            foreach (var color in result.Data)
-            {
-                Console.WriteLine(color.ColorName);
-            }
-        }
-
-        private static void ShowBrands()
-        {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-
-            var result = brandManager.GetAll();
-
-            foreach (var brand in result.Data)
-            {
-                Console.WriteLine(brand.BrandName);
-            }
-        }
-
         private static void ShowCars()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -150,46 +126,6 @@ namespace ConsoleUI
             foreach (var car in result.Data)
             {
                 Console.WriteLine(car.CarName);
-            }
-        }
-
-        private static void AddDatabaseColors()
-        {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-
-            List<Color> colors = new List<Color>
-            {
-                new Color { ColorName = "Red"},
-                new Color { ColorName = "Blue"},
-                new Color { ColorName = "Black"},
-                new Color { ColorName = "White"},
-                new Color { ColorName = "Orange"},
-                new Color { ColorName = "Dark Blue"}
-            };
-
-            foreach (var color in colors)
-            {
-                colorManager.Add(color);
-            }
-        }
-
-        private static void AddDatabaseBrands()
-        {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-
-            List<Brand> brands = new List<Brand>
-            {
-                new Brand { BrandName = "BMW"},
-                new Brand { BrandName = "Audi"},
-                new Brand { BrandName = "Ford"},
-                new Brand { BrandName = "Fiat"},
-                new Brand { BrandName = "Tesla"},
-                new Brand { BrandName = "Mercedes"}
-            };
-
-            foreach (var brand in brands)
-            {
-                brandManager.Add(brand);
             }
         }
 
