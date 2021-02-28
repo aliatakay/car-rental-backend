@@ -1,5 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
+using BLL.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -21,15 +23,9 @@ namespace BLL.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.CarName.Length >= 2 && car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
-                return new SuccessResult(Messages.DataAdded);
-            }
-            else
-            {
-                return new ErrorResult(Messages.DataRulesFailed);
-            }
+            ValidationTool.Validate(new CarValidator(), car);
+            _carDal.Add(car);
+            return new SuccessResult(Messages.DataAdded);
         }
 
         public IResult Delete(Car car)

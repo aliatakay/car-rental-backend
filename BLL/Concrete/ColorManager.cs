@@ -1,5 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
+using BLL.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -20,6 +22,7 @@ namespace BLL.Concrete
 
         public IResult Add(Color color)
         {
+            ValidationTool.Validate(new ColorValidator(), color);
             _colorDal.Add(color);
             return new SuccessDataResult<Color>(Messages.DataAdded);
         }
