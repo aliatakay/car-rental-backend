@@ -1,6 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
@@ -20,9 +21,10 @@ namespace BLL.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
-            ValidationTool.Validate(new RentalValidator(), rental);
+            //ValidationTool.Validate(new RentalValidator(), rental);
 
             if (CheckCarIsAvailable(rental.CarId))
             {

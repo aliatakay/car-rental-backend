@@ -1,6 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
@@ -21,9 +22,10 @@ namespace BLL.Concrete
             _customerDal = customerDal;
         }
 
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
-            ValidationTool.Validate(new CustomerValidator(), customer);
+            //ValidationTool.Validate(new CustomerValidator(), customer);
 
             _customerDal.Add(customer);
             return new SuccessResult(Messages.DataAdded);

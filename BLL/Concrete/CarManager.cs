@@ -1,6 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
@@ -21,9 +22,10 @@ namespace BLL.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            ValidationTool.Validate(new CarValidator(), car);
+            //ValidationTool.Validate(new CarValidator(), car);
             
             _carDal.Add(car);
             return new SuccessResult(Messages.DataAdded);

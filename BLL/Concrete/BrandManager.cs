@@ -1,6 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
@@ -20,9 +21,10 @@ namespace BLL.Concrete
             _brandDal = brandDal;
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
-            ValidationTool.Validate(new BrandValidator(), brand);
+            //ValidationTool.Validate(new BrandValidator(), brand);
             
             _brandDal.Add(brand);
             return new SuccessDataResult<Brand>(Messages.DataAdded);
