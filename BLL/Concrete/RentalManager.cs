@@ -1,5 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
+using BLL.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -20,6 +22,8 @@ namespace BLL.Concrete
 
         public IResult Add(Rental rental)
         {
+            ValidationTool.Validate(new RentalValidator(), rental);
+
             if (CheckCarIsAvailable(rental.CarId))
             {
                 _rentalDal.Add(rental);

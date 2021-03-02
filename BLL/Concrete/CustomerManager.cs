@@ -1,5 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
+using BLL.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -21,6 +23,8 @@ namespace BLL.Concrete
 
         public IResult Add(Customer customer)
         {
+            ValidationTool.Validate(new CustomerValidator(), customer);
+
             _customerDal.Add(customer);
             return new SuccessResult(Messages.DataAdded);
         }

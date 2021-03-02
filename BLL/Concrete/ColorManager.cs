@@ -23,6 +23,7 @@ namespace BLL.Concrete
         public IResult Add(Color color)
         {
             ValidationTool.Validate(new ColorValidator(), color);
+            
             _colorDal.Add(color);
             return new SuccessDataResult<Color>(Messages.DataAdded);
         }

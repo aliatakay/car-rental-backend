@@ -1,5 +1,7 @@
 ﻿using BLL.Abstract;
 using BLL.Constants;
+using BLL.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -20,6 +22,8 @@ namespace BLL.Concrete
 
         public IResult Add(User user)
         {
+            ValidationTool.Validate(new UserValidator(), user);
+
             _userDal.Add(user);
             return new SuccessResult(Messages.DataAdded);
         }

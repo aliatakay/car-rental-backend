@@ -23,6 +23,7 @@ namespace BLL.Concrete
         public IResult Add(Brand brand)
         {
             ValidationTool.Validate(new BrandValidator(), brand);
+            
             _brandDal.Add(brand);
             return new SuccessDataResult<Brand>(Messages.DataAdded);
         }
