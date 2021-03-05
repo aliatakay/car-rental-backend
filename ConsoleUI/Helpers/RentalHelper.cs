@@ -11,7 +11,7 @@ namespace ConsoleUI.Helpers
     {
         public static void Print()
         {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal(), new CarManager(new EfCarDal()));
 
             var result = rentalManager.GetAll();
 
@@ -37,7 +37,7 @@ namespace ConsoleUI.Helpers
         }
         public static void Add()
         {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal(), new CarManager(new EfCarDal()));
 
             List<Rental> rentals = new List<Rental>
             {

@@ -3,6 +3,7 @@ using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -16,10 +17,12 @@ namespace BLL.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
+        ICarService _carService; // it is for when we need a query result about car table
 
-        public RentalManager(IRentalDal rentalDal)
+        public RentalManager(IRentalDal rentalDal, ICarService carService)
         {
             _rentalDal = rentalDal;
+            _carService  = carService; // it is for when we need a query result about car table
         }
 
         [ValidationAspect(typeof(RentalValidator))]
@@ -27,13 +30,15 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new RentalValidator(), rental);
 
-            if (CheckIfCarIsAvailable(rental.CarId).Success)
+            IResult result = BusinessRules.Run(CheckIfCarIsAvailable(rental.CarId));
+
+            if (result != null)
             {
-                _rentalDal.Add(rental);
-                return new SuccessResult(Messages.DataAdded);
+                return result;
             }
-            
-            return new ErrorResult(Messages.DataRulesFailed);
+
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.DataAdded);
         }
 
         public IResult Delete(Rental rental)
