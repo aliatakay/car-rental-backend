@@ -8,6 +8,7 @@ using DAL.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BLL.Concrete
@@ -26,7 +27,7 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new RentalValidator(), rental);
 
-            if (CheckCarIsAvailable(rental.CarId))
+            if (CheckIfCarIsAvailable(rental.CarId).Success)
             {
                 _rentalDal.Add(rental);
                 return new SuccessResult(Messages.DataAdded);
@@ -52,17 +53,28 @@ namespace BLL.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == id), Messages.DataListed);
         }
 
-        public bool CheckCarIsAvailable(int carId)
-        {
-            var rentals = _rentalDal.GetAll(r => r.CarId == carId);
-
-            return (rentals == null) || rentals[rentals.Count - 1].ReturnDate != null;
-        }
-
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.DataUpdated);
         }
+
+        private IResult CheckIfCarIsAvailable(int carId)
+        {
+            var rentals = _rentalDal.GetAll(r => r.CarId == carId);
+
+            if(rentals != null)
+            {
+                var rental = rentals[rentals.Count - 1].ReturnDate;
+
+                if (rental != null)
+                {
+                    return new ErrorResult(Messages.CannotBeRented);
+                }
+            }
+
+            return new SuccessResult();
+        }
+
     }
 }
