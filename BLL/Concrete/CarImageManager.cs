@@ -39,12 +39,14 @@ namespace BLL.Concrete
 
         public IDataResult<List<CarImage>> GetImagesByCarId(int carId)
         {
-            return CheckIfAnyImagesExist(carId);
+            var carImages = _carImageDal.GetAll(c => c.CarId == carId);
+
+            return new SuccessDataResult<List<CarImage>>(carImages);
         }
 
         private IResult CheckIfNumberOfImagesExceeded(int carId)
         {
-            var carImages = CheckIfAnyImagesExist(carId);
+            var carImages = GetImagesByCarId(carId);
 
             if (carImages.Success)
             {
@@ -57,11 +59,15 @@ namespace BLL.Concrete
             return new SuccessResult();
         }
 
-        private IDataResult<List<CarImage>> CheckIfAnyImagesExist(int carId)
+        public IDataResult<CarImage> GetById(int id)
         {
-            var carImages = _carImageDal.GetAll(c => c.CarId == carId);
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.CarImageId == id), Messages.DataListed);
+        }
 
-            return new SuccessDataResult<List<CarImage>>(carImages);
+        public IResult Delete(CarImage carImage)
+        {
+            _carImageDal.Delete(carImage);
+            return new SuccessResult(Messages.DataDeleted);
         }
     }
 }

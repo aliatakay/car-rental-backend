@@ -1,4 +1,5 @@
 ﻿using BLL.Abstract;
+using BLL.Constants;
 using Core.Utilities.Helpers;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
@@ -58,25 +59,50 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("getallbycar")]
-        public IActionResult GetAllByCarId([FromForm(Name = ("CarId"))] int id)
+        public IActionResult GetAllByCarId(int id)
         {
             var result = _carImageService.GetImagesByCarId(id);
+            var images = new List<string>();
 
             if (result.Success)
             {
                 if (result.Data.Count == 0)
                 {
-                    string directory = string.Concat(Environment.CurrentDirectory, @"\wwwroot\Images\CarImages\logo.jpg");
-                    CarImage logo = new CarImage { CarId = id, ImagePath = directory };
-                    result.Data.Add(logo);
+                    string defaultImagePath = string.Concat(Environment.CurrentDirectory, @"\wwwroot\Images\CarImages\logo.jpg");
+                    images.Add(defaultImagePath);
                 }
-
-                return Ok(result);
+                else
+                {
+                    foreach (var carImage in result.Data)
+                    {
+                        images.Add(carImage.ImagePath);
+                    }
+                }
+                return Ok(images);
             }
             else
             {
                 return BadRequest(result);
             }
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(int id)
+        {
+            var images = _carImageService.GetById(id);
+            var result = (images.Data != null) ? images.Message : Messages.NoExisting;
+            
+            if (images.Success)
+            {
+                if (images.Data != null)
+                {
+                    result = _carImageService.Delete(images.Data).Message;
+                }
+
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
     }
 }
