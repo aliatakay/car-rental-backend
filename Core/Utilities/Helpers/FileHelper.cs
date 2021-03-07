@@ -14,9 +14,9 @@ namespace Core.Utilities.Helpers
 
             if (image.Length > 0)
             {
-                using (var uploading = new FileStream(imagePath, FileMode.Create))
+                using (var fileStream = new FileStream(imagePath, FileMode.Create))
                 {
-                    image.CopyTo(uploading);
+                    image.CopyTo(fileStream);
                 }
             }
 

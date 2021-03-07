@@ -40,5 +40,43 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _carImageService.GetAll();
+            
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+
+        [HttpGet("getallbycar")]
+        public IActionResult GetAllByCarId([FromForm(Name = ("CarId"))] int id)
+        {
+            var result = _carImageService.GetImagesByCarId(id);
+
+            if (result.Success)
+            {
+                if (result.Data.Count == 0)
+                {
+                    string directory = string.Concat(Environment.CurrentDirectory, @"\wwwroot\Images\CarImages\logo.jpg");
+                    CarImage logo = new CarImage { CarId = id, ImagePath = directory };
+                    result.Data.Add(logo);
+                }
+
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
     }
 }
