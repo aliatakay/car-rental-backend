@@ -22,10 +22,13 @@ namespace DAL.Concrete.EntityFramework
                              on car.ColorId equals color.ColorId
                              select new CarDetailDto
                              {
+                                 CarId = car.CarId,
                                  CarName = car.CarName,
                                  BrandName = brand.BrandName,
                                  ColorName = color.ColorName,
-                                 DailyPrice = car.DailyPrice
+                                 ModelYear = car.ModelYear,
+                                 DailyPrice = car.DailyPrice,
+                                 Description = car.Description
                              };
                 
                 return result.ToList();

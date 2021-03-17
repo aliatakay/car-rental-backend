@@ -20,6 +20,7 @@ namespace DAL.Concrete.EntityFramework
                              on u.UserId equals c.UserId
                              select new CustomerDetailDto
                              {
+                                 CustomerId = c.CustomerId,
                                  UserId = c.UserId,
                                  FirstName = u.FirstName,
                                  LastName = u.LastName,

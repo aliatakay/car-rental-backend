@@ -41,9 +41,10 @@ namespace ConsoleUI.Helpers
 
             List<Rental> rentals = new List<Rental>
             {
-                new Rental { CarId = 1, CustomerId = 3, RentDate = new DateTime(2021,01,01), ReturnDate = new DateTime(2021,01,03)},
-                new Rental { CarId = 2, CustomerId = 4, RentDate = new DateTime(2021,01,02), ReturnDate = new DateTime(2021,01,07)},
-                new Rental { CarId = 3, CustomerId = 5, RentDate = new DateTime(2021,01,05), ReturnDate = new DateTime(2021,01,11)}
+                new Rental { CarId = 2009, CustomerId = 1002, RentDate = new DateTime(2021,01,01), ReturnDate = new DateTime(2021,01,03)},
+                new Rental { CarId = 2010, CustomerId = 1003, RentDate = new DateTime(2021,01,02), ReturnDate = new DateTime(2021,01,07)},
+                new Rental { CarId = 2011, CustomerId = 1005, RentDate = new DateTime(2021,01,05), ReturnDate = new DateTime(2021,01,11)},
+                new Rental { CarId = 2009, CustomerId = 1006, RentDate = new DateTime(2021,03,14)}
             };
 
             foreach (var rental in rentals)

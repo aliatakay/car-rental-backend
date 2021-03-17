@@ -7,6 +7,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,11 @@ namespace BLL.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == id), Messages.DataListed);
         }
 
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.DataListed);
+        }
+
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
@@ -68,13 +74,16 @@ namespace BLL.Concrete
         {
             var rentals = _rentalDal.GetAll(r => r.CarId == carId);
 
-            if(rentals != null)
+            if(rentals.Count > 0)
             {
                 var rental = rentals[rentals.Count - 1].ReturnDate;
 
                 if (rental != null)
                 {
-                    return new ErrorResult(Messages.CannotBeRented);
+                    if (DateTime.Compare(rental.Value, DateTime.Now) > 0)
+                    {
+                        return new ErrorResult(Messages.CannotBeRented);
+                    }
                 }
             }
 
