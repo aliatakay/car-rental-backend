@@ -18,12 +18,12 @@ namespace BLL.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        ICarService _carService; // it is for when we need a query result about car table
+        ICarService _carService;
 
         public RentalManager(IRentalDal rentalDal, ICarService carService)
         {
             _rentalDal = rentalDal;
-            _carService  = carService; // it is for when we need a query result about car table
+            _carService  = carService;
         }
 
         [ValidationAspect(typeof(RentalValidator))]
