@@ -26,11 +26,11 @@ namespace WebAPI.Controllers
         [HttpPost("add")]
         public IActionResult Add([FromForm] CarImage carImage, [FromForm(Name = ("image"))] IFormFile image)
         {
-            carImage.ImageDate = DateTime.Now;
+            carImage.Date = DateTime.Now;
 
             string directory = string.Concat(Environment.CurrentDirectory, @"\wwwroot\Images\CarImages\");
 
-            carImage.ImagePath = FileHelper.StoreImageFile(image, directory);
+            carImage.Path = FileHelper.StoreImageFile(image, directory);
 
             var result = _carImageService.Add(carImage);
 
@@ -75,7 +75,7 @@ namespace WebAPI.Controllers
                 {
                     foreach (var carImage in result.Data)
                     {
-                        images.Add(carImage.ImagePath);
+                        images.Add(carImage.Path);
                     }
                 }
                 return Ok(images);

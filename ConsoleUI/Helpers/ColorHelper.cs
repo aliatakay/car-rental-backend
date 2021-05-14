@@ -15,12 +15,12 @@ namespace ConsoleUI.Helpers
 
             List<Color> colors = new List<Color>
             {
-                new Color { ColorName = "Red"},
-                new Color { ColorName = "Blue"},
-                new Color { ColorName = "Black"},
-                new Color { ColorName = "White"},
-                new Color { ColorName = "Orange"},
-                new Color { ColorName = "Dark Blue"}
+                new Color { Name = "Red"},
+                new Color { Name = "Blue"},
+                new Color { Name = "Black"},
+                new Color { Name = "White"},
+                new Color { Name = "Orange"},
+                new Color { Name = "Dark Blue"}
             };
 
             foreach (var color in colors)
@@ -37,7 +37,7 @@ namespace ConsoleUI.Helpers
 
             foreach (var color in result.Data)
             {
-                Console.WriteLine(color.ColorName);
+                Console.WriteLine(color.Name);
             }
         }
     }

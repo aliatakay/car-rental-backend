@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class Customer : IEntity
+    public class Branch : IEntity
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public string CompanyName { get; set; } 
+        public int CityId { get; set; }
+        public string Address { get; set; }
 
     }
 }

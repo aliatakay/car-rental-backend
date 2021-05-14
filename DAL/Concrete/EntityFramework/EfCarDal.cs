@@ -16,17 +16,19 @@ namespace DAL.Concrete.EntityFramework
             using (RentalManagementContext context = new RentalManagementContext())
             {
                 var result = from brand in context.Brands
+                             join model in context.Models
+                             on brand.Id equals model.BrandId
                              join car in context.Cars
-                             on brand.BrandId equals car.BrandId
+                             on model.Id equals car.ModelId
                              join color in context.Colors
-                             on car.ColorId equals color.ColorId
+                             on car.ColorId equals color.Id
                              select new CarDetailDto
                              {
-                                 CarId = car.CarId,
-                                 CarName = car.CarName,
-                                 BrandName = brand.BrandName,
-                                 ColorName = color.ColorName,
-                                 ModelYear = car.ModelYear,
+                                 CarId = car.Id,
+                                 BrandName = brand.Name,
+                                 ModelName = model.Name,
+                                 ColorName = color.Name,
+                                 ModelYear = model.Year,
                                  DailyPrice = car.DailyPrice,
                                  Description = car.Description
                              };

@@ -61,7 +61,7 @@ namespace BLL.Concrete
 
         public IDataResult<CarImage> GetById(int id)
         {
-            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.CarImageId == id), Messages.DataListed);
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id), Messages.DataListed);
         }
 
         public IResult Delete(CarImage carImage)

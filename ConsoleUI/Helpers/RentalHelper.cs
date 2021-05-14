@@ -17,7 +17,7 @@ namespace ConsoleUI.Helpers
 
             foreach (var rental in result.Data)
             {
-                Console.WriteLine("Rental Id: " + rental.RentalId);
+                Console.WriteLine("Rental Id: " + rental.Id);
                 Console.WriteLine("Car Id: " + rental.CarId);
                 Console.WriteLine("Customer Id: " + rental.CustomerId);
                 Console.WriteLine("Rent Date: " + rental.RentDate.ToString("dd/MM/yyyy"));

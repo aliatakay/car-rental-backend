@@ -56,7 +56,7 @@ namespace BLL.Concrete
 
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == id), Messages.DataListed);
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id), Messages.DataListed);
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()

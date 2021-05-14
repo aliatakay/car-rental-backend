@@ -17,17 +17,17 @@ namespace DAL.Concrete.EntityFramework
             {
                 var result = from brand in context.Brands
                              join car in context.Cars
-                             on brand.BrandId equals car.BrandId
+                             on brand.Id equals car.Id
                              join rental in context.Rentals
-                             on car.CarId equals rental.CarId
+                             on car.Id equals rental.CarId
                              join customer in context.Customers
-                             on rental.CustomerId equals customer.CustomerId
+                             on rental.CustomerId equals customer.Id
                              join user in context.Users
-                             on customer.UserId equals user.UserId
+                             on customer.UserId equals user.Id
                              select new RentalDetailDto
                              {
-                                 RentalId = rental.RentalId,
-                                 BrandName = brand.BrandName,
+                                 RentalId = rental.Id,
+                                 BrandName = brand.Name,
                                  FirstName = user.FirstName,
                                  LastName = user.LastName,
                                  RentDate = rental.RentDate,

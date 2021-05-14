@@ -17,7 +17,7 @@ namespace ConsoleUI.Helpers
 
             foreach (var car in result.Data)
             {
-                Console.WriteLine(car.CarName);
+                Console.WriteLine(car.ModelId);
             }
         }
         public static void Add()
@@ -28,30 +28,17 @@ namespace ConsoleUI.Helpers
             {
                 new Car
                 {
-                    BrandId = 1,
+                    ModelId = 1,
                     ColorId = 1,
-                    CarName = "Car Name 1",
-                    ModelYear = 2010,
                     DailyPrice = 200,
                     Description = "Car Description 1"
                 },
                 new Car
                 {
-                    BrandId = 2,
+                    ModelId = 2,
                     ColorId = 2,
-                    CarName = "Car Name 2",
-                    ModelYear = 2012,
                     DailyPrice = 400,
                     Description = "Car Description 2"
-                },
-                new Car
-                {
-                    BrandId = 3,
-                    ColorId = 3,
-                    CarName = "Car Name 3",
-                    ModelYear = 2014,
-                    DailyPrice = 600,
-                    Description = "Car Description 3"
                 }
             };
 
@@ -65,13 +52,13 @@ namespace ConsoleUI.Helpers
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Delete(new Car { CarId = 3 });
+            carManager.Delete(new Car { Id = 3 });
 
             var result = carManager.GetAll();
 
             foreach (var car in result.Data)
             {
-                Console.WriteLine(car.CarName);
+                Console.WriteLine(car.ModelId);
             }
         }
 
@@ -83,8 +70,8 @@ namespace ConsoleUI.Helpers
 
             foreach (var car in result.Data)
             {
-                Console.WriteLine("Araç: " + car.CarName);
-                Console.WriteLine("Marka: " + car.BrandName);
+                Console.WriteLine("Araç: " + car.BrandName);
+                Console.WriteLine("Marka: " + car.ModelName);
                 Console.WriteLine("Renk: " + car.ColorName);
                 Console.WriteLine("Fiyat: " + car.DailyPrice.ToString("0.00##") + " TL");
                 Console.WriteLine("-------------------");

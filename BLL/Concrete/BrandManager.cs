@@ -43,7 +43,7 @@ namespace BLL.Concrete
 
         public IDataResult<Brand> GetById(int id)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id), Messages.DataListed);
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Id == id), Messages.DataListed);
         }
 
         public IResult Update(Brand brand)

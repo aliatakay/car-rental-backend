@@ -51,7 +51,7 @@ namespace BLL.Concrete
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id), Messages.DataListed);
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id), Messages.DataListed);
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
@@ -61,12 +61,12 @@ namespace BLL.Concrete
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id), Messages.DataListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == id), Messages.DataListed);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id), Messages.DataListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == id), Messages.DataListed);
         }
 
         public IResult Update(Car car)

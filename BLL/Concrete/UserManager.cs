@@ -43,7 +43,7 @@ namespace BLL.Concrete
 
         public IDataResult<User> GetById(int id)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == id), Messages.DataListed);
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.DataListed);
 
         }
 

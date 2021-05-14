@@ -15,12 +15,12 @@ namespace ConsoleUI.Helpers
 
             List<Brand> brands = new List<Brand>
             {
-                new Brand { BrandName = "BMW"},
-                new Brand { BrandName = "Audi"},
-                new Brand { BrandName = "Ford"},
-                new Brand { BrandName = "Fiat"},
-                new Brand { BrandName = "Tesla"},
-                new Brand { BrandName = "Mercedes"}
+                new Brand { Name = "BMW"},
+                new Brand { Name = "Audi"},
+                new Brand { Name = "Ford"},
+                new Brand { Name = "Fiat"},
+                new Brand { Name = "Tesla"},
+                new Brand { Name = "Mercedes"}
             };
 
             foreach (var brand in brands)
@@ -37,7 +37,7 @@ namespace ConsoleUI.Helpers
 
             foreach (var brand in result.Data)
             {
-                Console.WriteLine(brand.BrandName);
+                Console.WriteLine(brand.Name);
             }
         }
     }
