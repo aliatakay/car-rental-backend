@@ -25,8 +25,14 @@ namespace WebAPI.Controllers
         {
             var result = _modelService.GetAll();
 
-            if (result.Success) return Ok(result);
-            return BadRequest(result);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
 
         [HttpGet("getbyid")]
@@ -34,8 +40,14 @@ namespace WebAPI.Controllers
         {
             var result = _modelService.GetById(id);
 
-            if (result.Success) return Ok(result);
-            return BadRequest(result);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
 
         [HttpPost("add")]
@@ -43,8 +55,14 @@ namespace WebAPI.Controllers
         {
             var result = _modelService.Add(model);
 
-            if (result.Success) return Ok(result.Message);
-            return BadRequest(result.Message);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
         }
 
         [HttpPost("delete")]
@@ -52,8 +70,14 @@ namespace WebAPI.Controllers
         {
             var result = _modelService.Delete(model);
 
-            if (result.Success) return Ok(result.Message);
-            return BadRequest(result.Message);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
         }
 
         [HttpPost("update")]
@@ -61,8 +85,14 @@ namespace WebAPI.Controllers
         {
             var result = _modelService.Update(model);
 
-            if (result.Success) return Ok(result.Message);
-            return BadRequest(result.Message);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
         }
     }
 }

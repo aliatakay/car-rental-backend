@@ -24,6 +24,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _customerService.GetAll();
+
             if (result.Success)
             {
                 return Ok(result);
@@ -38,6 +39,7 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _customerService.GetById(id);
+
             if (result.Success)
             {
                 return Ok(result);
@@ -52,6 +54,7 @@ namespace WebAPI.Controllers
         public IActionResult GetCustomerDetails()
         {
             var result = _customerService.GetCustomerDetails();
+
             if (result.Success)
             {
                 return Ok(result);
@@ -66,6 +69,7 @@ namespace WebAPI.Controllers
         public IActionResult Add(Customer customer)
         {
             var result = _customerService.Add(customer);
+
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -80,6 +84,7 @@ namespace WebAPI.Controllers
         public IActionResult Update(Customer customer)
         {
             var result = _customerService.Update(customer);
+
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -94,6 +99,7 @@ namespace WebAPI.Controllers
         public IActionResult Delete(Customer customer)
         {
             var result = _customerService.Delete(customer);
+
             if (result.Success)
             {
                 return Ok(result.Message);

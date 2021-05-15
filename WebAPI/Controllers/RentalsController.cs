@@ -24,6 +24,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _rentalService.GetAll();
+
             if (result.Success)
             {
                 return Ok(result);
@@ -38,6 +39,7 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _rentalService.GetById(id);
+
             if (result.Success)
             {
                 return Ok(result);
@@ -52,6 +54,7 @@ namespace WebAPI.Controllers
         public IActionResult GetRentalDetails()
         {
             var result = _rentalService.GetRentalDetails();
+
             if (result.Success)
             {
                 return Ok(result);
@@ -66,6 +69,7 @@ namespace WebAPI.Controllers
         public IActionResult Add(Rental rental)
         {
             var result = _rentalService.Add(rental);
+
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -80,6 +84,7 @@ namespace WebAPI.Controllers
         public IActionResult Update(Rental rental)
         {
             var result = _rentalService.Update(rental);
+
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -94,6 +99,7 @@ namespace WebAPI.Controllers
         public IActionResult Delete(Rental rental)
         {
             var result = _rentalService.Delete(rental);
+
             if (result.Success)
             {
                 return Ok(result.Message);
