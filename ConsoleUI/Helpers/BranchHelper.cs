@@ -1,4 +1,5 @@
-﻿using DAL.Concrete.EntityFramework;
+﻿using BLL.Concrete;
+using DAL.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ConsoleUI.Helpers
     {
         public static void Print()
         {
-            BranchManager branchManager = new BranchManager(new EfBrandDal());
+            BranchManager branchManager = new BranchManager(new EfBranchDal());
 
             var result = branchManager.GetAll();
 
