@@ -30,6 +30,7 @@ namespace DAL.Concrete.EntityFramework
                                  ColorName = color.Name,
                                  ModelYear = model.Year,
                                  DailyPrice = car.DailyPrice,
+                                 IsAvailable = car.IsAvailable,
                                  Description = car.Description
                              };
                 

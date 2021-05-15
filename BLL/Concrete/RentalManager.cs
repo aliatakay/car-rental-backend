@@ -18,12 +18,10 @@ namespace BLL.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
-        ICarService _carService;
 
-        public RentalManager(IRentalDal rentalDal, ICarService carService)
+        public RentalManager(IRentalDal rentalDal)
         {
             _rentalDal = rentalDal;
-            _carService  = carService;
         }
 
         [ValidationAspect(typeof(RentalValidator))]
