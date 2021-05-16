@@ -13,5 +13,7 @@ namespace BLL.Abstract
         IResult Add(Branch branch);
         IResult Update(Branch branch);
         IResult Delete(Branch branch);
+        IDataResult<List<Branch>> GetAllByCityId(int cityId);
+
     }
 }

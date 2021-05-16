@@ -1,4 +1,5 @@
-﻿using BLL.Constants;
+﻿using BLL.Abstract;
+using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace BLL.Concrete
 {
-    public class ModelManager
+    public class ModelManager : IModelService
     {
         IModelDal _modelDal;
 
@@ -39,9 +40,54 @@ namespace BLL.Concrete
             return new SuccessDataResult<List<Model>>(_modelDal.GetAll(), Messages.DataListed);
         }
 
+        public IDataResult<List<Model>> GetAllByBrandId(int brandId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByCategoryId(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByYear(int year)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByYearBetween(int minYear, int maxYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByYearGreaterThan(int year)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByYearGreaterThanOrEqualTo(int year)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByYearLessThan(int year)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Model>> GetAllByYearLessThanOrEqualTo(int year)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<Model> GetById(int id)
         {
             return new SuccessDataResult<Model>(_modelDal.Get(m => m.Id == id), Messages.DataListed);
+        }
+
+        public IDataResult<Model> GetByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public IResult Update(Model model)

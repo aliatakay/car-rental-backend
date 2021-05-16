@@ -48,6 +48,11 @@ namespace BLL.Concrete
 
         }
 
+        public IDataResult<Customer> GetByUserId(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
         {
             return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), Messages.DataListed);

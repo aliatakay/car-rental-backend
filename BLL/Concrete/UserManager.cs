@@ -41,6 +41,21 @@ namespace BLL.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.DataListed);
         }
 
+        public IDataResult<List<User>> GetAllByFirstName(string firstName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<User>> GetAllByLastName(string lastName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<User> GetByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.DataListed);

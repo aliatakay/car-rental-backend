@@ -69,5 +69,10 @@ namespace BLL.Concrete
             _carImageDal.Delete(carImage);
             return new SuccessResult(Messages.DataDeleted);
         }
+
+        public IDataResult<List<CarImage>> GetAllByCarId(int carId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

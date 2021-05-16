@@ -13,5 +13,7 @@ namespace BLL.Abstract
         IResult Add(Color color);
         IResult Update(Color color);
         IResult Delete(Color color);
+        IDataResult<Color> GetByName(string name);
+
     }
 }

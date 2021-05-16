@@ -13,5 +13,7 @@ namespace BLL.Abstract
         IResult Add(Category category);
         IResult Update(Category category);
         IResult Delete(Category category);
+        IDataResult<Category> GetByName(string name);
+
     }
 }

@@ -13,5 +13,7 @@ namespace BLL.Abstract
         IResult Add(City city);
         IResult Update(City city);
         IResult Delete(City city);
+        IDataResult<City> GetByName(string name);
+
     }
 }

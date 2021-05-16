@@ -52,6 +52,141 @@ namespace BLL.Concrete
 
         }
 
+        public IDataResult<List<Rental>> GetAllByCarId(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByCustomerId(int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentDate(DateTime rentDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentDateBetween(DateTime minYear, DateTime maxYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentDateGreaterThan(DateTime rentDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentDateGreaterThanOrEqualTo(DateTime rentDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentDateLessThan(DateTime rentDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentDateLessThanOrEqualTo(DateTime rentDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentYear(int rentYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentYearBetween(int minYear, int maxYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentYearGreaterThan(int rentYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentYearGreaterThanOrEqualTo(int rentYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentYearLessThan(int rentYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByRentYearLessThanOrEqualTo(int rentYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnDate(DateTime returnDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnDateBetween(DateTime minYear, DateTime maxYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnDateGreaterThan(DateTime returnDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnDateGreaterThanOrEqualTo(DateTime returnDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnDateLessThan(DateTime returnDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnDateLessThanOrEqualTo(DateTime returnDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnYear(int returnYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnYearBetween(int minYear, int maxYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnYearGreaterThan(int returnYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnYearGreaterThanOrEqualTo(int returnYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnYearLessThan(int returnYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllByReturnYearLessThanOrEqualTo(int returnYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Rental>> GetAllNotReturnedYet()
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id), Messages.DataListed);

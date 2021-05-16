@@ -50,10 +50,10 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpGet("getbybrand")]
+        [HttpGet("getbymodel")]
         public IActionResult GetByBrandId(int id)
         {
-            var result = _carService.GetCarsByBrandId(id);
+            var result = _carService.GetAllByModelId(id);
 
             if (result.Success)
             {
@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbycolor")]
         public IActionResult GetByColorId(int id)
         {
-            var result = _carService.GetCarsByColorId(id);
+            var result = _carService.GetAllByColorId(id);
 
             if (result.Success)
             {

@@ -49,6 +49,61 @@ namespace BLL.Concrete
             }
         }
 
+        public IDataResult<List<Car>> GetAllAvailable()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByColorId(int colorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByDailyPriceBetween(decimal minDailyPrice, decimal maxDailyPrice)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByDailyPriceCheaperThan(decimal dailyPrice)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByDailyPriceMoreExpensiveThan(decimal dailyPrice)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByModelId(int modelId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByModelYearBetween(int minModelYear, int maxModelYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByModelYearGreaterThan(int modelYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByModelYearLessThan(int modelYear)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<Car>> GetAllByModelYearLessThanOrEqualTo(int modelYear)
+        {
+            throw new NotImplementedException();
+        }
+
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id), Messages.DataListed);

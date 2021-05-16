@@ -1,4 +1,5 @@
-﻿using BLL.Constants;
+﻿using BLL.Abstract;
+using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace BLL.Concrete
 {
-    public class CityManager
+    public class CityManager : ICityService
     {
         ICityDal _cityDal;
 
@@ -42,6 +43,11 @@ namespace BLL.Concrete
         public IDataResult<City> GetById(int id)
         {
             return new SuccessDataResult<City>(_cityDal.Get(c => c.Id == id), Messages.DataListed);
+        }
+
+        public IDataResult<City> GetByName(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public IResult Update(City city)

@@ -1,4 +1,5 @@
-﻿using BLL.Constants;
+﻿using BLL.Abstract;
+using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace BLL.Concrete
 {
-    public class BranchManager
+    public class BranchManager : IBranchService
     {
         IBranchDal _branchDal;
 
@@ -37,6 +38,11 @@ namespace BLL.Concrete
         public IDataResult<List<Branch>> GetAll()
         {
             return new SuccessDataResult<List<Branch>>(_branchDal.GetAll(), Messages.DataListed);
+        }
+
+        public IDataResult<List<Branch>> GetAllByCityId(int cityId)
+        {
+            throw new NotImplementedException();
         }
 
         public IDataResult<Branch> GetById(int id)

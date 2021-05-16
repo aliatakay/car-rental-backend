@@ -13,6 +13,7 @@ namespace BLL.Abstract
         IResult Add(Brand brand);
         IResult Update(Brand brand);
         IResult Delete(Brand brand);
+        IDataResult<Brand> GetByName(string name);
 
     }
 }
