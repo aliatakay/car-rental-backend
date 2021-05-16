@@ -15,6 +15,6 @@ namespace BLL.Abstract
         IResult Update(Customer customer);
         IResult Delete(Customer customer);
         IDataResult<Customer> GetByUserId(int userId);
-        IDataResult<List<CustomerDetailDto>> GetCustomerDetails();
+        IDataResult<List<CustomerDetailDto>> GetAllAsDto();
     }
 }

@@ -2,7 +2,6 @@
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
-using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -51,57 +50,65 @@ namespace BLL.Concrete
 
         public IDataResult<List<Car>> GetAllAvailable()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.IsAvailable == true), Messages.DataListed);
+
         }
 
         public IDataResult<List<Car>> GetAllByColorId(int colorId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), Messages.DataListed);
         }
 
         public IDataResult<List<Car>> GetAllByDailyPriceBetween(decimal minDailyPrice, decimal maxDailyPrice)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice >= minDailyPrice && c.DailyPrice <= maxDailyPrice), Messages.DataListed);
+
         }
 
         public IDataResult<List<Car>> GetAllByDailyPriceCheaperThan(decimal dailyPrice)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice <= dailyPrice), Messages.DataListed);
         }
 
         public IDataResult<List<Car>> GetAllByDailyPriceMoreExpensiveThan(decimal dailyPrice)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice >= dailyPrice), Messages.DataListed);
+
         }
 
         public IDataResult<List<Car>> GetAllByModelId(int modelId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ModelId <= modelId), Messages.DataListed);
+
         }
 
-        public IDataResult<List<Car>> GetAllByModelYearBetween(int minModelYear, int maxModelYear)
+        public IDataResult<List<CarDetailDto>> GetAllByModelYearBetween(int minModelYear, int maxModelYear)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear >= minModelYear && c.ModelYear <= maxModelYear), Messages.DataListed);
+
         }
 
-        public IDataResult<List<Car>> GetAllByModelYearGreaterThan(int modelYear)
+        public IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThan(int modelYear)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear > modelYear), Messages.DataListed);
         }
 
-        public IDataResult<List<Car>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear)
+        public IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear >= modelYear), Messages.DataListed);
+
         }
 
-        public IDataResult<List<Car>> GetAllByModelYearLessThan(int modelYear)
+        public IDataResult<List<CarDetailDto>> GetAllByModelYearLessThan(int modelYear)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear < modelYear), Messages.DataListed);
+
         }
 
-        public IDataResult<List<Car>> GetAllByModelYearLessThanOrEqualTo(int modelYear)
+        public IDataResult<List<CarDetailDto>> GetAllByModelYearLessThanOrEqualTo(int modelYear)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear <= modelYear), Messages.DataListed);
+
         }
 
         public IDataResult<Car> GetById(int id)
@@ -109,9 +116,9 @@ namespace BLL.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id), Messages.DataListed);
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetAllAsDto()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.DataListed);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(), Messages.DataListed);
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)

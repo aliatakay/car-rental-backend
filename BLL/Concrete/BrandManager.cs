@@ -48,7 +48,7 @@ namespace BLL.Concrete
 
         public IDataResult<Brand> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Name == name), Messages.DataListed);
         }
 
         public IResult Update(Brand brand)

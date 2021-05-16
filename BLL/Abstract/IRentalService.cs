@@ -14,7 +14,7 @@ namespace BLL.Abstract
         IResult Add(Rental rental);
         IResult Update(Rental rental);
         IResult Delete(Rental rental);
-        IDataResult<List<RentalDetailDto>> GetRentalDetails();
+        IDataResult<List<RentalDetailDto>> GetAllAsDto();
         IDataResult<List<Rental>> GetAllByCarId(int carId);
         IDataResult<List<Rental>> GetAllByCustomerId(int customerId);
         IDataResult<List<Rental>> GetAllByRentDate(DateTime rentDate);

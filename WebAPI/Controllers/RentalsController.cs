@@ -51,9 +51,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getdetails")]
-        public IActionResult GetRentalDetails()
+        public IActionResult GetAllAsDto()
         {
-            var result = _rentalService.GetRentalDetails();
+            var result = _rentalService.GetAllAsDto();
 
             if (result.Success)
             {

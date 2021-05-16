@@ -17,12 +17,12 @@ namespace BLL.Abstract
         IDataResult<List<Car>> GetAllByModelId(int modelId);
         IDataResult<List<Car>> GetAllByColorId(int colorId);
         IDataResult<List<Car>> GetAllAvailable();
-        IDataResult<List<CarDetailDto>> GetCarDetails();
-        IDataResult<List<Car>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear);
-        IDataResult<List<Car>> GetAllByModelYearGreaterThan(int modelYear);
-        IDataResult<List<Car>> GetAllByModelYearLessThanOrEqualTo(int modelYear);
-        IDataResult<List<Car>> GetAllByModelYearLessThan(int modelYear);
-        IDataResult<List<Car>> GetAllByModelYearBetween(int minModelYear, int maxModelYear);
+        IDataResult<List<CarDetailDto>> GetAllAsDto();
+        IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear);
+        IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThan(int modelYear);
+        IDataResult<List<CarDetailDto>> GetAllByModelYearLessThanOrEqualTo(int modelYear);
+        IDataResult<List<CarDetailDto>> GetAllByModelYearLessThan(int modelYear);
+        IDataResult<List<CarDetailDto>> GetAllByModelYearBetween(int minModelYear, int maxModelYear);
         IDataResult<List<Car>> GetAllByDailyPriceMoreExpensiveThan(decimal dailyPrice);
         IDataResult<List<Car>> GetAllByDailyPriceCheaperThan(decimal dailyPrice);
         IDataResult<List<Car>> GetAllByDailyPriceBetween(decimal minDailyPrice, decimal maxDailyPrice);

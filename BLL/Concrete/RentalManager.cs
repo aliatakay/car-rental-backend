@@ -192,9 +192,9 @@ namespace BLL.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id), Messages.DataListed);
         }
 
-        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        public IDataResult<List<RentalDetailDto>> GetAllAsDto()
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.DataListed);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllAsDto(), Messages.DataListed);
         }
 
         public IResult Update(Rental rental)

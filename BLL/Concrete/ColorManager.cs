@@ -48,7 +48,7 @@ namespace BLL.Concrete
 
         public IDataResult<Color> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Color>(_colorDal.Get(c => c.Name == name), Messages.DataListed);
         }
 
         public IResult Update(Color color)

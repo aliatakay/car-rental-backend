@@ -47,7 +47,7 @@ namespace BLL.Concrete
 
         public IDataResult<Category> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.Name == name), Messages.DataListed);
         }
 
         public IResult Update(Category category)

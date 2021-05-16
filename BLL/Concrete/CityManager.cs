@@ -47,7 +47,7 @@ namespace BLL.Concrete
 
         public IDataResult<City> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<City>(_cityDal.Get(c => c.Name == name), Messages.DataListed);
         }
 
         public IResult Update(City city)

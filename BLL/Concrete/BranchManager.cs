@@ -42,7 +42,7 @@ namespace BLL.Concrete
 
         public IDataResult<List<Branch>> GetAllByCityId(int cityId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Branch>>(_branchDal.GetAll(b => b.CityId == cityId), Messages.DataListed);
         }
 
         public IDataResult<Branch> GetById(int id)

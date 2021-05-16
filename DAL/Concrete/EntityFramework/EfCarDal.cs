@@ -6,12 +6,13 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq.Expressions;
 
 namespace DAL.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentalManagementContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetAllAsDto(Expression<Func<CarDetailDto, bool>> expr = null)
         {
             using (RentalManagementContext context = new RentalManagementContext())
             {

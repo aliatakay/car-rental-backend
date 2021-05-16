@@ -50,12 +50,12 @@ namespace BLL.Concrete
 
         public IDataResult<Customer> GetByUserId(int userId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.UserId == userId), Messages.DataListed);
         }
 
-        public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
+        public IDataResult<List<CustomerDetailDto>> GetAllAsDto()
         {
-            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), Messages.DataListed);
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetAllAsDto(), Messages.DataListed);
         }
 
         public IResult Update(Customer customer)

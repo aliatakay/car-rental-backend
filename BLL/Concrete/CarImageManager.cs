@@ -72,7 +72,7 @@ namespace BLL.Concrete
 
         public IDataResult<List<CarImage>> GetAllByCarId(int carId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId), Messages.DataListed);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace ConsoleUI.Helpers
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            var result = carManager.GetCarDetails();
+            var result = carManager.GetAllAsDto();
 
             foreach (var car in result.Data)
             {
