@@ -14,7 +14,5 @@ namespace BLL.Abstract
         IResult Update(User user);
         IResult Delete(User user);
         IDataResult<User> GetByEmail(string email);
-        IDataResult<List<User>> GetAllByFirstName(string firstName);
-        IDataResult<List<User>> GetAllByLastName(string lastName);
     }
 }

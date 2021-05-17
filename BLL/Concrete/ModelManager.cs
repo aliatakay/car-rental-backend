@@ -65,17 +65,7 @@ namespace BLL.Concrete
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Model>> GetAllByYearGreaterThanOrEqualTo(int year)
-        {
-            throw new NotImplementedException();
-        }
-
         public IDataResult<List<Model>> GetAllByYearLessThan(int year)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<Model>> GetAllByYearLessThanOrEqualTo(int year)
         {
             throw new NotImplementedException();
         }

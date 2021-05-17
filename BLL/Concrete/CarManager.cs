@@ -93,23 +93,12 @@ namespace BLL.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear > modelYear), Messages.DataListed);
         }
 
-        public IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear)
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear >= modelYear), Messages.DataListed);
-
-        }
 
         public IDataResult<List<CarDetailDto>> GetAllByModelYearLessThan(int modelYear)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear < modelYear), Messages.DataListed);
-
         }
 
-        public IDataResult<List<CarDetailDto>> GetAllByModelYearLessThanOrEqualTo(int modelYear)
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(c => c.ModelYear <= modelYear), Messages.DataListed);
-
-        }
 
         public IDataResult<Car> GetById(int id)
         {
@@ -119,16 +108,6 @@ namespace BLL.Concrete
         public IDataResult<List<CarDetailDto>> GetAllAsDto()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllAsDto(), Messages.DataListed);
-        }
-
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
-        {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == id), Messages.DataListed);
-        }
-
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
-        {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == id), Messages.DataListed);
         }
 
         public IResult Update(Car car)

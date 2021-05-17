@@ -18,9 +18,7 @@ namespace BLL.Abstract
         IDataResult<List<Car>> GetAllByColorId(int colorId);
         IDataResult<List<Car>> GetAllAvailable();
         IDataResult<List<CarDetailDto>> GetAllAsDto();
-        IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThanOrEqualTo(int modelYear);
         IDataResult<List<CarDetailDto>> GetAllByModelYearGreaterThan(int modelYear);
-        IDataResult<List<CarDetailDto>> GetAllByModelYearLessThanOrEqualTo(int modelYear);
         IDataResult<List<CarDetailDto>> GetAllByModelYearLessThan(int modelYear);
         IDataResult<List<CarDetailDto>> GetAllByModelYearBetween(int minModelYear, int maxModelYear);
         IDataResult<List<Car>> GetAllByDailyPriceMoreExpensiveThan(decimal dailyPrice);
