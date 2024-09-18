@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Core.Utilities.Results
+﻿namespace Core.Utilities.Results
 {
     public class ErrorResult : Result
     {
@@ -10,6 +6,7 @@ namespace Core.Utilities.Results
         {
 
         }
+
         public ErrorResult() : base(false)
         {
 

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Core.DAL
 {
@@ -14,6 +13,5 @@ namespace Core.DAL
         void Add(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
-
     }
 }

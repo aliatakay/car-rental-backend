@@ -1,8 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.Abstract
 {
@@ -13,6 +11,5 @@ namespace BLL.Abstract
         IResult Add(CarImage carImage);
         IResult Delete(CarImage carImage);
         IDataResult<List<CarImage>> GetAllByCarId(int carId);
-
     }
 }

@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -46,7 +43,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _carImageService.GetAll();
-            
+
             if (result.Success)
             {
                 return Ok(result);
@@ -91,7 +88,7 @@ namespace WebAPI.Controllers
         {
             var images = _carImageService.GetById(id);
             var result = (images.Data != null) ? images.Message : Messages.NoExisting;
-            
+
             if (images.Success)
             {
                 if (images.Data != null)

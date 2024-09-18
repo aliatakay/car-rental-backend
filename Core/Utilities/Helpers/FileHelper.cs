@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.IO;
-using System.Text;
-using Microsoft.AspNetCore.Http;
 
 namespace Core.Utilities.Helpers
 {

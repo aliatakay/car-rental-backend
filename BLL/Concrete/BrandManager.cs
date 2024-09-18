@@ -2,13 +2,10 @@
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
-using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.Concrete
 {
@@ -25,7 +22,7 @@ namespace BLL.Concrete
         public IResult Add(Brand brand)
         {
             //ValidationTool.Validate(new BrandValidator(), brand);
-            
+
             _brandDal.Add(brand);
             return new SuccessDataResult<Brand>(Messages.DataAdded);
         }

@@ -1,9 +1,4 @@
-﻿using BLL.Concrete;
-using ConsoleUI.Helpers;
-using DAL.Concrete.EntityFramework;
-using Entities.Concrete;
-using System;
-using System.Collections.Generic;
+﻿using ConsoleUI.Helpers;
 
 namespace ConsoleUI
 {

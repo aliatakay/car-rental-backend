@@ -2,7 +2,6 @@
 using BLL.Constants;
 using BLL.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
-using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DAL.Abstract;
@@ -10,8 +9,6 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BLL.Concrete
 {
@@ -137,7 +134,7 @@ namespace BLL.Concrete
         {
             var rentals = _rentalDal.GetAll(r => r.CarId == carId);
 
-            if(rentals.Count > 0)
+            if (rentals.Count > 0)
             {
                 var rental = rentals[rentals.Count - 1].ReturnDate;
 

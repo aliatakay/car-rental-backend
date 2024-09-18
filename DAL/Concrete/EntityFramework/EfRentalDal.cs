@@ -1,11 +1,10 @@
-﻿using System.Linq;
-using Core.DAL.EntityFramework;
+﻿using Core.DAL.EntityFramework;
 using DAL.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace DAL.Concrete.EntityFramework

@@ -1,9 +1,7 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.Abstract
 {
@@ -24,6 +22,5 @@ namespace BLL.Abstract
         IDataResult<List<Car>> GetAllByDailyPriceMoreExpensiveThan(decimal dailyPrice);
         IDataResult<List<Car>> GetAllByDailyPriceCheaperThan(decimal dailyPrice);
         IDataResult<List<Car>> GetAllByDailyPriceBetween(decimal minDailyPrice, decimal maxDailyPrice);
-
     }
 }

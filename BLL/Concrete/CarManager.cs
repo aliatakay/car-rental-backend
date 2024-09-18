@@ -8,7 +8,6 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.Concrete
 {
@@ -25,7 +24,7 @@ namespace BLL.Concrete
         public IResult Add(Car car)
         {
             //ValidationTool.Validate(new CarValidator(), car);
-            
+
             _carDal.Add(car);
             return new SuccessResult(Messages.DataAdded);
         }
@@ -38,7 +37,7 @@ namespace BLL.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if(DateTime.Now.Hour == 5)
+            if (DateTime.Now.Hour == 5)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }

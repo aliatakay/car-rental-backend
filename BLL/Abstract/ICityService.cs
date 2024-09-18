@@ -1,8 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.Abstract
 {
@@ -14,6 +12,5 @@ namespace BLL.Abstract
         IResult Update(City city);
         IResult Delete(City city);
         IDataResult<City> GetByName(string name);
-
     }
 }

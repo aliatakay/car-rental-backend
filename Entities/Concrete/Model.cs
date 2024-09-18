@@ -1,7 +1,4 @@
 ﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities.Concrete
 {
@@ -12,6 +9,5 @@ namespace Entities.Concrete
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public int Year { get; set; }
-
     }
 }
