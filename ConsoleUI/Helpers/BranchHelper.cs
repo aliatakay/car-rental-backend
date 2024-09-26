@@ -1,8 +1,6 @@
 ﻿using BLL.Concrete;
 using DAL.Concrete.EntityFramework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleUI.Helpers
 {
