@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Data", "DAL\CarRental.Data.csproj", "{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Data", "CarRental.Data\CarRental.Data.csproj", "{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Business", "BLL\CarRental.Business.csproj", "{D5C10CF0-45EA-4E09-8484-A78AB1711DCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Business", "CarRental.Business\CarRental.Business.csproj", "{D5C10CF0-45EA-4E09-8484-A78AB1711DCB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{E6FA9234-B237-4EE1-B957-74A8760C9970}"
 EndProject
