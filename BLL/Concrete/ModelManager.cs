@@ -1,22 +1,22 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class ModelManager : IModelService
+    public class ModelService : IModelService
     {
-        IModelDal _modelDal;
+        IModelRepository _modelRepository;
 
-        public ModelManager(IModelDal modelDal)
+        public ModelService(IModelRepository modelRepository)
         {
-            _modelDal = modelDal;
+            _modelRepository = modelRepository;
         }
 
         [ValidationAspect(typeof(ModelValidator))]
@@ -24,19 +24,19 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new ModelValidator(), model);
 
-            _modelDal.Add(model);
+            _modelRepository.Add(model);
             return new SuccessDataResult<Model>(Messages.DataAdded);
         }
 
         public IResult Delete(Model model)
         {
-            _modelDal.Delete(model);
+            _modelRepository.Delete(model);
             return new SuccessDataResult<Model>(Messages.DataDeleted);
         }
 
         public IDataResult<List<Model>> GetAll()
         {
-            return new SuccessDataResult<List<Model>>(_modelDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<Model>>(_modelRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<List<Model>> GetAllByBrandId(int brandId)
@@ -71,7 +71,7 @@ namespace BLL.Concrete
 
         public IDataResult<Model> GetById(int id)
         {
-            return new SuccessDataResult<Model>(_modelDal.Get(m => m.Id == id), Messages.DataListed);
+            return new SuccessDataResult<Model>(_modelRepository.Get(m => m.Id == id), Messages.DataListed);
         }
 
         public IDataResult<Model> GetByName(string name)
@@ -81,7 +81,7 @@ namespace BLL.Concrete
 
         public IResult Update(Model model)
         {
-            _modelDal.Update(model);
+            _modelRepository.Update(model);
             return new SuccessDataResult<Model>(Messages.DataUpdated);
         }
     }

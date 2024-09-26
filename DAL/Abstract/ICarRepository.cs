@@ -1,13 +1,13 @@
-﻿using Core.DAL;
+﻿using Core.Repository;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace DAL.Abstract
+namespace CarRental.Data.Abstract
 {
-    public interface ICarDal : IEntityRepository<Car>
+    public interface ICarRepository : IEntityRepository<Car>
     {
         List<CarDetailDto> GetAllAsDto(Expression<Func<CarDetailDto, bool>> expr = null);
     }

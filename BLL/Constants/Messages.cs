@@ -1,4 +1,4 @@
-﻿namespace BLL.Constants
+﻿namespace CarRental.Business.Constants
 {
     public static class Messages
     {

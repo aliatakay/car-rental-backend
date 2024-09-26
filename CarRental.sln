@@ -1,19 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{FDD02B55-0BC5-4136-931E-31D64A3A92E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Data", "DAL\CarRental.Data.csproj", "{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{D5C10CF0-45EA-4E09-8484-A78AB1711DCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRental.Business", "BLL\CarRental.Business.csproj", "{D5C10CF0-45EA-4E09-8484-A78AB1711DCB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{E6FA9234-B237-4EE1-B957-74A8760C9970}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{E9FDA85F-106C-4868-A2BD-87EE281D4F81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C97C4E8A-2310-498C-B488-8E70F34770F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C97C4E8A-2310-498C-B488-8E70F34770F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Common", "1 - Common", "{8A192CB7-D2C9-4163-AE89-2B3A4AEF08C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Data Access", "2 - Data Access", "{0B54EAAF-D107-4D08-8C81-C46681F15560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Business", "3 - Business", "{D65A3B99-0715-474D-8451-6144C7C90DFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Presentation", "4 - Presentation", "{697670B0-F85C-4BFD-8A92-2E7AD09F9CFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDD02B55-0BC5-4136-931E-31D64A3A92E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDD02B55-0BC5-4136-931E-31D64A3A92E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDD02B55-0BC5-4136-931E-31D64A3A92E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDD02B55-0BC5-4136-931E-31D64A3A92E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3328EC2F-A1B5-41BB-80DC-087FD795DC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,6 +50,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3328EC2F-A1B5-41BB-80DC-087FD795DC8D} = {0B54EAAF-D107-4D08-8C81-C46681F15560}
+		{D5C10CF0-45EA-4E09-8484-A78AB1711DCB} = {D65A3B99-0715-474D-8451-6144C7C90DFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6AD240B-AFDF-4E9A-BB12-7E88EAB80887}

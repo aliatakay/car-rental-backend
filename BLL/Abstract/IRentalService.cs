@@ -4,7 +4,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 
-namespace BLL.Abstract
+namespace CarRental.Business.Abstract
 {
     public interface IRentalService
     {

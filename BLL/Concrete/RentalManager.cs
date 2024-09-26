@@ -1,24 +1,24 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class RentalManager : IRentalService
+    public class RentalService : IRentalService
     {
-        IRentalDal _rentalDal;
+        IRentalRepository _rentalRepository;
 
-        public RentalManager(IRentalDal rentalDal)
+        public RentalService(IRentalRepository rentalRepository)
         {
-            _rentalDal = rentalDal;
+            _rentalRepository = rentalRepository;
         }
 
         [ValidationAspect(typeof(RentalValidator))]
@@ -33,19 +33,19 @@ namespace BLL.Concrete
                 return result;
             }
 
-            _rentalDal.Add(rental);
+            _rentalRepository.Add(rental);
             return new SuccessResult(Messages.DataAdded);
         }
 
         public IResult Delete(Rental rental)
         {
-            _rentalDal.Delete(rental);
+            _rentalRepository.Delete(rental);
             return new SuccessResult(Messages.DataDeleted);
         }
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<Rental>>(_rentalRepository.GetAll(), Messages.DataListed);
 
         }
 
@@ -116,23 +116,23 @@ namespace BLL.Concrete
 
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id), Messages.DataListed);
+            return new SuccessDataResult<Rental>(_rentalRepository.Get(r => r.Id == id), Messages.DataListed);
         }
 
         public IDataResult<List<RentalDetailDto>> GetAllAsDto()
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllAsDto(), Messages.DataListed);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalRepository.GetAllAsDto(), Messages.DataListed);
         }
 
         public IResult Update(Rental rental)
         {
-            _rentalDal.Update(rental);
+            _rentalRepository.Update(rental);
             return new SuccessResult(Messages.DataUpdated);
         }
 
         private IResult CheckIfCarIsAvailable(int carId)
         {
-            var rentals = _rentalDal.GetAll(r => r.CarId == carId);
+            var rentals = _rentalRepository.GetAll(r => r.CarId == carId);
 
             if (rentals.Count > 0)
             {

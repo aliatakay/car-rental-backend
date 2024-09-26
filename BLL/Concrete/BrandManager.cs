@@ -1,21 +1,21 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class BrandManager : IBrandService
+    public class BrandService : IBrandService
     {
-        IBrandDal _brandDal;
+        IBrandRepository _brandRepository;
 
-        public BrandManager(IBrandDal brandDal)
+        public BrandService(IBrandRepository brandRepository)
         {
-            _brandDal = brandDal;
+            _brandRepository = brandRepository;
         }
 
         [ValidationAspect(typeof(BrandValidator))]
@@ -23,34 +23,34 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new BrandValidator(), brand);
 
-            _brandDal.Add(brand);
+            _brandRepository.Add(brand);
             return new SuccessDataResult<Brand>(Messages.DataAdded);
         }
 
         public IResult Delete(Brand brand)
         {
-            _brandDal.Delete(brand);
+            _brandRepository.Delete(brand);
             return new SuccessDataResult<Brand>(Messages.DataDeleted);
         }
 
         public IDataResult<List<Brand>> GetAll()
         {
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<Brand>>(_brandRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<Brand> GetById(int id)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Id == id), Messages.DataListed);
+            return new SuccessDataResult<Brand>(_brandRepository.Get(b => b.Id == id), Messages.DataListed);
         }
 
         public IDataResult<Brand> GetByName(string name)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.Name == name), Messages.DataListed);
+            return new SuccessDataResult<Brand>(_brandRepository.Get(b => b.Name == name), Messages.DataListed);
         }
 
         public IResult Update(Brand brand)
         {
-            _brandDal.Update(brand);
+            _brandRepository.Update(brand);
             return new SuccessDataResult<Brand>(Messages.DataUpdated);
         }
     }

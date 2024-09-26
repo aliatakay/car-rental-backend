@@ -1,5 +1,5 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
 using Core.Utilities.Helpers;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;

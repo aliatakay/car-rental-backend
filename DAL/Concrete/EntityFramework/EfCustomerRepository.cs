@@ -1,5 +1,5 @@
-﻿using Core.DAL.EntityFramework;
-using DAL.Abstract;
+﻿using Core.Repository.EntityFramework;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace DAL.Concrete.EntityFramework
+namespace CarRental.Data.Concrete.EntityFramework
 {
-    public class EfCustomerDal : EfEntityRepositoryBase<Customer, RentalManagementContext>, ICustomerDal
+    public class EfCustomerRepository : EfEntityRepositoryBase<Customer, RentalManagementContext>, ICustomerRepository
     {
         public List<CustomerDetailDto> GetAllAsDto(Expression<Func<Customer, bool>> expr = null)
         {

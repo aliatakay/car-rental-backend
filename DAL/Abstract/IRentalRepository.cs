@@ -1,13 +1,13 @@
-﻿using Core.DAL;
+﻿using Core.Repository;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace DAL.Abstract
+namespace CarRental.Data.Abstract
 {
-    public interface IRentalDal : IEntityRepository<Rental>
+    public interface IRentalRepository : IEntityRepository<Rental>
     {
         List<RentalDetailDto> GetAllAsDto(Expression<Func<Rental, bool>> expr = null);
     }

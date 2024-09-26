@@ -1,7 +1,7 @@
 ﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL.Concrete.EntityFramework
+namespace CarRental.Data.Concrete.EntityFramework
 {
     public class RentalManagementContext : DbContext
     {

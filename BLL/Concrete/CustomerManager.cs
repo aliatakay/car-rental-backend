@@ -1,22 +1,22 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class CustomerManager : ICustomerService
+    public class CustomerService : ICustomerService
     {
-        ICustomerDal _customerDal;
+        ICustomerRepository _customerRepository;
 
-        public CustomerManager(ICustomerDal customerDal)
+        public CustomerService(ICustomerRepository customerRepository)
         {
-            _customerDal = customerDal;
+            _customerRepository = customerRepository;
         }
 
         [ValidationAspect(typeof(CustomerValidator))]
@@ -24,40 +24,40 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new CustomerValidator(), customer);
 
-            _customerDal.Add(customer);
+            _customerRepository.Add(customer);
             return new SuccessResult(Messages.DataAdded);
         }
 
         public IResult Delete(Customer customer)
         {
-            _customerDal.Delete(customer);
+            _customerRepository.Delete(customer);
             return new SuccessResult(Messages.DataDeleted);
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<Customer>>(_customerRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.Id == id), Messages.DataListed);
+            return new SuccessDataResult<Customer>(_customerRepository.Get(c => c.Id == id), Messages.DataListed);
 
         }
 
         public IDataResult<Customer> GetByUserId(int userId)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.UserId == userId), Messages.DataListed);
+            return new SuccessDataResult<Customer>(_customerRepository.Get(c => c.UserId == userId), Messages.DataListed);
         }
 
         public IDataResult<List<CustomerDetailDto>> GetAllAsDto()
         {
-            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetAllAsDto(), Messages.DataListed);
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerRepository.GetAllAsDto(), Messages.DataListed);
         }
 
         public IResult Update(Customer customer)
         {
-            _customerDal.Update(customer);
+            _customerRepository.Update(customer);
             return new SuccessResult(Messages.DataUpdated);
         }
     }

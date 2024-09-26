@@ -1,7 +1,7 @@
 ﻿using Entities.Concrete;
 using FluentValidation;
 
-namespace BLL.ValidationRules.FluentValidation
+namespace CarRental.Business.ValidationRules.FluentValidation
 {
     public class CarValidator : AbstractValidator<Car>
     {

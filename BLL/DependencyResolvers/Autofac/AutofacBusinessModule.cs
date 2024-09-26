@@ -1,33 +1,33 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
-using BLL.Abstract;
-using BLL.Concrete;
+using CarRental.Business.Abstract;
+using CarRental.Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
-using DAL.Abstract;
-using DAL.Concrete.EntityFramework;
+using CarRental.Data.Abstract;
+using CarRental.Data.Concrete.EntityFramework;
 
-namespace BLL.DependencyResolvers.Autofac
+namespace CarRental.Business.DependencyResolvers.Autofac
 {
     public class AutofacBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<BrandManager>().As<IBrandService>().SingleInstance();
-            builder.RegisterType<ColorManager>().As<IColorService>().SingleInstance();
-            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-            builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
-            builder.RegisterType<RentalManager>().As<IRentalService>().SingleInstance();
-            builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
-            builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
+            builder.RegisterType<BrandService>().As<IBrandService>().SingleInstance();
+            builder.RegisterType<ColorService>().As<IColorService>().SingleInstance();
+            builder.RegisterType<UserService>().As<IUserService>().SingleInstance();
+            builder.RegisterType<CustomerService>().As<ICustomerService>().SingleInstance();
+            builder.RegisterType<RentalService>().As<IRentalService>().SingleInstance();
+            builder.RegisterType<CarService>().As<ICarService>().SingleInstance();
+            builder.RegisterType<CarImageService>().As<ICarImageService>().SingleInstance();
 
-            builder.RegisterType<EfBrandDal>().As<IBrandDal>().SingleInstance();
-            builder.RegisterType<EfColorDal>().As<IColorDal>().SingleInstance();
-            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
-            builder.RegisterType<EfCustomerDal>().As<ICustomerDal>().SingleInstance();
-            builder.RegisterType<EfRentalDal>().As<IRentalDal>().SingleInstance();
-            builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
-            builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
+            builder.RegisterType<EfBrandRepository>().As<IBrandRepository>().SingleInstance();
+            builder.RegisterType<EfColorRepository>().As<IColorRepository>().SingleInstance();
+            builder.RegisterType<EfUserRepository>().As<IUserRepository>().SingleInstance();
+            builder.RegisterType<EfCustomerRepository>().As<ICustomerRepository>().SingleInstance();
+            builder.RegisterType<EfRentalRepository>().As<IRentalRepository>().SingleInstance();
+            builder.RegisterType<EfCarRepository>().As<ICarRepository>().SingleInstance();
+            builder.RegisterType<EfCarImageRepository>().As<ICarImageRepository>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

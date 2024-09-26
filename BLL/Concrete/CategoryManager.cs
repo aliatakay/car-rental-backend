@@ -1,21 +1,21 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class CategoryManager : ICategoryService
+    public class CategoryService : ICategoryService
     {
-        ICategoryDal _categoryDal;
+        ICategoryRepository _categoryRepository;
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryService(ICategoryRepository categoryRepository)
         {
-            _categoryDal = categoryDal;
+            _categoryRepository = categoryRepository;
         }
 
         [ValidationAspect(typeof(CategoryValidator))]
@@ -23,34 +23,34 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new CategoryValidator(), category);
 
-            _categoryDal.Add(category);
+            _categoryRepository.Add(category);
             return new SuccessDataResult<Category>(Messages.DataAdded);
         }
 
         public IResult Delete(Category category)
         {
-            _categoryDal.Delete(category);
+            _categoryRepository.Delete(category);
             return new SuccessDataResult<Category>(Messages.DataDeleted);
         }
 
         public IDataResult<List<Category>> GetAll()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<Category>>(_categoryRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<Category> GetById(int id)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.Id == id), Messages.DataListed);
+            return new SuccessDataResult<Category>(_categoryRepository.Get(c => c.Id == id), Messages.DataListed);
         }
 
         public IDataResult<Category> GetByName(string name)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.Name == name), Messages.DataListed);
+            return new SuccessDataResult<Category>(_categoryRepository.Get(c => c.Name == name), Messages.DataListed);
         }
 
         public IResult Update(Category category)
         {
-            _categoryDal.Update(category);
+            _categoryRepository.Update(category);
             return new SuccessDataResult<Category>(Messages.DataAdded);
         }
     }

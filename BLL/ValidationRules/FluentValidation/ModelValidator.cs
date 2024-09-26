@@ -2,7 +2,7 @@
 using FluentValidation;
 using System;
 
-namespace BLL.ValidationRules.FluentValidation
+namespace CarRental.Business.ValidationRules.FluentValidation
 {
     public class ModelValidator : AbstractValidator<Model>
     {

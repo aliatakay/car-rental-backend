@@ -1,21 +1,21 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class ColorManager : IColorService
+    public class ColorService : IColorService
     {
-        IColorDal _colorDal;
+        IColorRepository _colorRepository;
 
-        public ColorManager(IColorDal colorDal)
+        public ColorService(IColorRepository colorRepository)
         {
-            _colorDal = colorDal;
+            _colorRepository = colorRepository;
         }
 
         [ValidationAspect(typeof(ColorValidator))]
@@ -23,34 +23,34 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new ColorValidator(), color);
 
-            _colorDal.Add(color);
+            _colorRepository.Add(color);
             return new SuccessDataResult<Color>(Messages.DataAdded);
         }
 
         public IResult Delete(Color color)
         {
-            _colorDal.Delete(color);
+            _colorRepository.Delete(color);
             return new SuccessDataResult<Color>(Messages.DataDeleted);
         }
 
         public IDataResult<List<Color>> GetAll()
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<Color>>(_colorRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<Color> GetById(int id)
         {
-            return new SuccessDataResult<Color>(_colorDal.Get(c => c.Id == id), Messages.DataListed);
+            return new SuccessDataResult<Color>(_colorRepository.Get(c => c.Id == id), Messages.DataListed);
         }
 
         public IDataResult<Color> GetByName(string name)
         {
-            return new SuccessDataResult<Color>(_colorDal.Get(c => c.Name == name), Messages.DataListed);
+            return new SuccessDataResult<Color>(_colorRepository.Get(c => c.Name == name), Messages.DataListed);
         }
 
         public IResult Update(Color color)
         {
-            _colorDal.Update(color);
+            _colorRepository.Update(color);
             return new SuccessDataResult<Color>(Messages.DataAdded);
         }
     }

@@ -1,21 +1,21 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
-using BLL.ValidationRules.FluentValidation;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
+using CarRental.Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class UserManager : IUserService
+    public class UserService : IUserService
     {
-        IUserDal _userDal;
+        IUserRepository _userRepository;
 
-        public UserManager(IUserDal userDal)
+        public UserService(IUserRepository userRepository)
         {
-            _userDal = userDal;
+            _userRepository = userRepository;
         }
 
         [ValidationAspect(typeof(UserValidator))]
@@ -23,35 +23,35 @@ namespace BLL.Concrete
         {
             //ValidationTool.Validate(new UserValidator(), user);
 
-            _userDal.Add(user);
+            _userRepository.Add(user);
             return new SuccessResult(Messages.DataAdded);
         }
 
         public IResult Delete(User user)
         {
-            _userDal.Delete(user);
+            _userRepository.Delete(user);
             return new SuccessResult(Messages.DataDeleted);
         }
 
         public IDataResult<List<User>> GetAll()
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<User>>(_userRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<User> GetByEmail(string email)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email), Messages.DataListed);
+            return new SuccessDataResult<User>(_userRepository.Get(u => u.Email == email), Messages.DataListed);
         }
 
         public IDataResult<User> GetById(int id)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id), Messages.DataListed);
+            return new SuccessDataResult<User>(_userRepository.Get(u => u.Id == id), Messages.DataListed);
 
         }
 
         public IResult Update(User user)
         {
-            _userDal.Update(user);
+            _userRepository.Update(user);
             return new SuccessResult(Messages.DataUpdated);
         }
     }

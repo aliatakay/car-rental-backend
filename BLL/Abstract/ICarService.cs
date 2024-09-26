@@ -3,7 +3,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
 
-namespace BLL.Abstract
+namespace CarRental.Business.Abstract
 {
     public interface ICarService
     {

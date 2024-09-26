@@ -1,20 +1,20 @@
-﻿using BLL.Abstract;
-using BLL.Constants;
+﻿using CarRental.Business.Abstract;
+using CarRental.Business.Constants;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
-using DAL.Abstract;
+using CarRental.Data.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
 
-namespace BLL.Concrete
+namespace CarRental.Business.Concrete
 {
-    public class CarImageManager : ICarImageService
+    public class CarImageService : ICarImageService
     {
-        ICarImageDal _carImageDal;
+        ICarImageRepository _carImageRepository;
 
-        public CarImageManager(ICarImageDal carImageDal)
+        public CarImageService(ICarImageRepository carImageRepository)
         {
-            _carImageDal = carImageDal;
+            _carImageRepository = carImageRepository;
         }
 
         public IResult Add(CarImage carImage)
@@ -26,18 +26,18 @@ namespace BLL.Concrete
                 return result;
             }
 
-            _carImageDal.Add(carImage);
+            _carImageRepository.Add(carImage);
             return new SuccessResult(Messages.DataAdded);
         }
 
         public IDataResult<List<CarImage>> GetAll()
         {
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(), Messages.DataListed);
+            return new SuccessDataResult<List<CarImage>>(_carImageRepository.GetAll(), Messages.DataListed);
         }
 
         public IDataResult<List<CarImage>> GetImagesByCarId(int carId)
         {
-            var carImages = _carImageDal.GetAll(c => c.CarId == carId);
+            var carImages = _carImageRepository.GetAll(c => c.CarId == carId);
 
             return new SuccessDataResult<List<CarImage>>(carImages);
         }
@@ -59,18 +59,18 @@ namespace BLL.Concrete
 
         public IDataResult<CarImage> GetById(int id)
         {
-            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id), Messages.DataListed);
+            return new SuccessDataResult<CarImage>(_carImageRepository.Get(c => c.Id == id), Messages.DataListed);
         }
 
         public IResult Delete(CarImage carImage)
         {
-            _carImageDal.Delete(carImage);
+            _carImageRepository.Delete(carImage);
             return new SuccessResult(Messages.DataDeleted);
         }
 
         public IDataResult<List<CarImage>> GetAllByCarId(int carId)
         {
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId), Messages.DataListed);
+            return new SuccessDataResult<List<CarImage>>(_carImageRepository.GetAll(c => c.CarId == carId), Messages.DataListed);
         }
     }
 }
