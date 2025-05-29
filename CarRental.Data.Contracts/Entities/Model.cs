@@ -1,11 +1,10 @@
 ﻿using Core.Entities;
-using System;
 
-namespace Entities.Concrete
+namespace CarRental.Data.Contracts.Entities
 {
-    public class Model : IEntityWithGuidKey
+    public class Model : IEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public int BrandId { get; set; }
 
